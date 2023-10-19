@@ -6,18 +6,35 @@ import { useState } from "react";
 // Pieliec, ka pieskaitīt var nevis 1,
 // bet lietotāja ierakstītu ratio
 
+// Uztaisi savu Counter komponenti...
+
 function App() {
   const [result, setResult] = useState(0);
+  const [ratioChange, setRatioChange] = useState(1);
 
   function addRatio() {
-    setResult(result + 1);
+    setResult(result + ratioChange);
     console.log("Funkcija izsaukta");
     console.log("result ir " + result);
   }
 
+  function subtractRatio() {
+    setResult(result - ratioChange);
+  }
+
+  function handleRatioChange(kaķēns) {
+    setRatioChange(kaķēns.target.value);
+  }
+
   return (
     <div className="App">
-      <button onClick={addRatio}>GANG +1 ratio</button>
+      <input
+        type="number"
+        value={ratioChange}
+        onChange={handleRatioChange}
+      ></input>
+      <button onClick={addRatio}>GANG +{ratioChange} ratio</button>
+      <button onClick={subtractRatio}>GANG -{ratioChange} ratio</button>
       <h1>{result}</h1>
     </div>
   );
