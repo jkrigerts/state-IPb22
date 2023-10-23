@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function Hello() {
-  const [name, setName] = useState("");
+function Hello(props) {
+  const [name, setName] = useState(props.name);
 
   function changeName(event) {
     setName(event.target.value);
